@@ -11,6 +11,7 @@ use App\Entity\Events;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -34,16 +35,16 @@ class Cr13Controller extends AbstractController
     $event = new Events;
     /* Here we will build a form using createFormBuilder and inside this function we will put our object and then we write add then we select the input type then an array to add an attribute that we want in our input field */
            $form = $this->createFormBuilder($event)->add( 'eventname', TextType::class, array ('attr' => array ('class'=> 'form-control' , 'style'=> 'margin-bottom:15px')))
-           ->add( 'eventdatestarttime', TextType::class, array ('eventdatestarttime' => array('class' => 'form-control' , 'style'=> 'margin-bottom:15px')))
-           ->add( 'eventdescription', TextareaType::class, array( 'eventdescription' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
-           ->add( 'eventimage', TextareaType::class, array( 'eventimage' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
-           ->add( 'eventcapacity', TextareaType::class, array( 'eventcapacity' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
-           ->add( 'eventemail', TextareaType::class, array( 'eventemail' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
-           ->add( 'eventphonenumber', TextareaType::class, array( 'eventphonenumber' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
-           ->add( 'eventaddress', TextareaType::class, array( 'eventaddress' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
-           ->add( 'eventurl', TextareaType::class, array( 'eventurl' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
-           ->add( 'eventtype', TextareaType::class, array( 'eventtype' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
-       ->add( 'save' , SubmitType::class, array ( 'label' => 'Create event' , 'attr'  => array ( 'class' => 'btn-primary' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventdatestarttime', DateTimeType::class, array ('attr' => array('attr' => 'form-control' , 'style'=> 'margin-bottom:15px')))
+           ->add( 'event_description', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventimage', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventcapacity', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventemail', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventphonenumber', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventaddress', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventurl', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventtype', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+        ->add( 'save' , SubmitType::class, array ( 'label' => 'Create event' , 'attr'  => array ( 'class' => 'btn-primary' , 'style' => 'margin-bottom:15px' )))
            ->getForm();
            $form->handleRequest($request);
            
@@ -84,7 +85,7 @@ class Cr13Controller extends AbstractController
                 return   $this ->redirectToRoute( 'cr13' );
            }
     /* now to make the form we will add this line form->createView() and now you can see the form in create.html.twig file  */
-            return   $this ->render( '/create.html.twig' , array ( 'form'  => $form->createView()));
+            return   $this ->render( 'cr13/create.html.twig' , array ( 'form'  => $form->createView()));
    }
  /**
     * @Route("/delete", name="delete_page")
