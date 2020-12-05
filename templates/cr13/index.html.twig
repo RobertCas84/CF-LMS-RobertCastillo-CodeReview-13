@@ -2,22 +2,24 @@
 
 {% block body %}
 
+  
   {% for event in events %} {# making a loop in twig inside the variable todos #}
    
        
             <div class="card">
             <h5 class="card-header">{{ event.eventname }}</h5>
             <div class="card-body">
+            <img src="{{ event.eventimage }}" class="card-img-top" alt="...">
             <h5 class="card-title">{{event.eventdatestarttime}}</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <p class="card-text">{{ event.eventdescription }}</p>
+            <a href="details" class="btn btn-primary">View</a>
             </div>
             </div>
             <tr>
            <th  scope="row">{{ event.id }}</th > 
            <td> {{ event.eventname }}</td>
            <td>{{event.eventdatestarttime}}</td > the duedate of the todo, when we want to print a date we must choose the format |date('F j, Y, g:i a') otherwise we will have error #}
-           <td> <a  href="/details/{{event.id}}" class= "btn btn-success">View</a> a tag to go to the path /details/{{event.id}} so we send the id of the record with the path (like when we are using get method )
+           <td> <a  href="details" class= "btn btn-success">View</a> a tag to go to the path /details/{{event.id}} so we send the id of the record with the path (like when we are using get method )
 
 </table>
 {% endfor %}

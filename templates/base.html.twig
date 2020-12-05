@@ -10,9 +10,34 @@
 
     </head>
     <body>
-        {% include 'navbar.html.twig' %}
-        {% block body %}{% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/cr13">Events</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/cr13">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="details">Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="edit">Edit Event</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="create">Add Event</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="delete">Delete Event</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
+        {% block body %}{% endblock %}
+        
         {% block javascripts %}{% endblock %}
     </body>
 </html>
