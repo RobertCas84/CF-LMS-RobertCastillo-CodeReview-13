@@ -1,4 +1,31 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-  details
+    <hr>
+    <div class"container">
+      <div class="row">
+        <div class="card mb-3" style="max-width: 900px;">
+          <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ event.eventimage }}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{event.eventname}}</h5>
+        <p class="card-text">{{event.eventdatestarttime}}</p>
+        <p class="card-text">{{event.eventdescription}}</p>
+        <p class="card-text">Capacity:{{event.eventcapacity}}</p>
+        <p class="card-text">E-mail:{{event.eventemail}}</p>
+
+        <p class="card-text">Tel. nr:{{event.eventphonenumber}}</p>
+        <p class="card-text">Address:{{event.eventaddress}}</p>
+        <p class="card-text">Homepage:{{event.eventurl}}</p>
+        <p class="card-text">{{event.eventtype}}</p>
+<a  class="btn btn-default" href="/" ><button type="button" class="btn btn-primary">Back to Events</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
 {% endblock  %}

@@ -4,7 +4,8 @@
 
   
   {% for event in events %} {# making a loop in twig inside the variable todos #}
-   
+          <div class="container">
+            <div class"row">
        
             <div class="card">
             <h5 class="card-header">{{ event.eventname }}</h5>
@@ -12,13 +13,14 @@
             <img src="{{ event.eventimage }}" class="card-img-top" alt="...">
             <h5 class="card-title">{{event.eventdatestarttime}}</h5>
             <p class="card-text">{{ event.eventdescription }}</p>
-            <a href="details" class="btn btn-primary">View</a>
+            <a href="/details/{{event.id}}" class="btn btn-primary">View</a>
             </div>
             </div>
-            <tr>
+            </div>
+            </div>
            
         
 
-</table>
+
 {% endfor %}
     {% endblock %}

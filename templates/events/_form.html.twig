@@ -1,0 +1,128 @@
+{{ form_start(form) }}
+
+    <div class="container">
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_name) }}
+                {{ form_widget(form.event_name, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_name) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_name) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_date_start_time) }}
+                {{ form_widget(form.event_date_start_time, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_date_start_time) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_date_start_time) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_description) }}
+                {{ form_widget(form.event_description, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_description) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_description) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_image) }}
+                {{ form_widget(form.event_image, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_image) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_image) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_capacity) }}
+                {{ form_widget(form.event_capacity, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_capacity) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_capacity) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_email) }}
+                {{ form_widget(form.event_email, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_email) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_email) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_phone_number) }}
+                {{ form_widget(form.event_phone_number, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_phone_number) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_phone_number) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_address) }}
+                {{ form_widget(form.event_address, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_address) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_address) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_url) }}
+                {{ form_widget(form.event_url, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_url) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_url) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row my-2">
+            <div class="col-md-12">
+                {{ form_label(form.event_type) }}
+                {{ form_widget(form.event_type, {'attr': {'class': 'form-control'}}) }}
+                <small>{{ form_help(form.event_type) }}</small>
+                <div class="form-error">
+                    {{ form_errors(form.event_type) }}
+                </div>
+            </div>
+        </div>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
+    
+    </div>
+    
+{{ form_end(form) }}

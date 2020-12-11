@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Events{% endblock %}
+
+{% block body %}
+    <h2>More Info</h2>
+    {# <div class="container">
+    <div class="row"> #}
+    <a href="{{ path('events_index') }}"><button type="button" class="btn btn-outline-info">back to list</button></a>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th></th>
+                <td class="table-secondary"><img src="{{ event.eventImage }}"></td>
+            </tr>
+            <tr>
+                <th>Event_name</th>
+                <td class="table-secondary">{{ event.eventName }}</td>
+            </tr>
+            <tr>
+                <th>Event_date_start_time</th>
+                <td class="table-secondary">{{ event.eventDateStartTime }}</td>
+            </tr>
+            <tr>
+                <th>Event_description</th>
+                <td class="table-secondary">{{ event.eventDescription }}</td>
+            </tr>
+            
+            <tr>
+                <th>Event_capacity</th>
+                <td class="table-secondary">{{ event.eventCapacity }}</td>
+            </tr>
+            <tr>
+                <th>Event_email</th>
+                <td class="table-secondary">{{ event.eventEmail }}</td>
+            </tr>
+            <tr>
+                <th>Event_phone_number</th>
+                <td class="table-secondary">{{ event.eventPhoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Event_address</th>
+                <td class="table-secondary">{{ event.eventAddress }}</td>
+            </tr>
+            <tr>
+                <th>Event_url</th>
+                <td class="table-secondary">{{ event.eventUrl }}</td>
+            </tr>
+            <tr>
+                <th>Event_type</th>
+                <td class="table-secondary">Type:{{ event.eventType }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('events_index') }}"><button type="button" class="btn btn-outline-info">back to list</button></a>
+
+    <a href="{{ path('events_edit', {'id': event.id}) }}"><button type="button" class="btn btn-outline-primary">edit</button></a>
+
+    {{ include('events/_delete_form.html.twig') }}
+    {# </div>
+    </div> #}
+
+{% endblock %}

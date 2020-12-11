@@ -33,10 +33,10 @@ class Cr13Controller extends AbstractController
    public  function createAction(Request $request)
    {
     $event = new Events;
-    /* Here we will build a form using createFormBuilder and inside this function we will put our object and then we write add then we select the input type then an array to add an attribute that we want in our input field */
+    
            $form = $this->createFormBuilder($event)->add( 'eventname', TextType::class, array ('attr' => array ('class'=> 'form-control' , 'style'=> 'margin-bottom:15px')))
            ->add( 'eventdatestarttime', DateTimeType::class, array ('attr' => array('attr' => 'form-control' , 'style'=> 'margin-bottom:15px')))
-           ->add( 'event_description', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+           ->add( 'eventdescription', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
            ->add( 'eventimage', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
            ->add( 'eventcapacity', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
            ->add( 'eventemail', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
@@ -49,11 +49,9 @@ class Cr13Controller extends AbstractController
            $form->handleRequest($request);
            
     
-            /* Here we have an if statement, if we click submit and if  the form is valid we will take the values from the form and we will save them in the new variables */
+           
             if ($form->isSubmitted() && $form->isValid()){
-                //fetching data
-    
-                // taking the data from the inputs by the name of the inputs then getData() function
+               
                $eventname = $form[ 'eventname' ]->getData();
                $eventdatestarttime = $form[ 'eventdatestarttime' ]->getData();
                $eventdescription = $form[ 'eventdescription' ]->getData();
@@ -88,24 +86,74 @@ class Cr13Controller extends AbstractController
             return   $this ->render( 'cr13/create.html.twig' , array ( 'form'  => $form->createView()));
    }
  /**
-    * @Route("/delete", name="delete_page")
+    * @Route("/delete/{id}", name="delete_page")
     */
-    public  function deleteAction()
+    public  function deleteAction($id)
     {
-        return  $this->render('cr13/delete.html.twig');
+        $em = $this->getDoctrine()->getManager();
+           $event = $em->getRepository('App:Todo')->find($id);
+           $em->remove($event);
+            $em->flush();
+            $this->addFlash(
+                   'notice',
+                    'Events Removed'
+                   );
+            return  $this->redirectToRoute('cr13');
     }
  /**
-    * @Route("/edit", name="edit_page")
+    * @Route("/edit/{id}", name="edit_page")
     */
-    public  function editAction()
-    {
-        return  $this->render('cr13/edit.html.twig');
-    }
+    public   function   editAction ($id)
+   {
+        return   $this ->render( 'todo/edit.html.twig' );
+   }
+    // public  function editAction( $id, Request $request)
+    // {
+    //     $event = $this->getDoctrine()->getRepository('App:Events')->find($id);
+// $now = new\DateTime('now');
+    // $form = $this->createFormBuilder($event)->add( 'eventname', TextType::class, array ('attr' => array ('class'=> 'form-control' , 'style'=> 'margin-bottom:15px')))
+    // ->add( 'eventdatestarttime', DateTimeType::class, array ('attr' => array('attr' => 'form-control' , 'style'=> 'margin-bottom:15px')))
+    // ->add( 'eventdescription', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+    // ->add( 'eventimage', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+    // ->add( 'eventcapacity', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+    // ->add( 'eventemail', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+    // ->add( 'eventphonenumber', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+    // ->add( 'eventaddress', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+    // ->add( 'eventurl', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+    // ->add( 'eventtype', TextType::class, array( 'attr' => array( 'class'=> 'form-control' , 'style' => 'margin-bottom:15px' )))
+    // ->add( 'save' , SubmitType::class, array ( 'label' => 'Create event' , 'attr'  => array ( 'class' => 'btn-primary' , 'style' => 'margin-bottom:15px' )))
+    // ->getForm();
+    // $form->handleRequest($request);
+
+    // if ($form->isSubmitted() && $form->isValid()){
+        //fetching data
+
+        // taking the data from the inputs by the name of the inputs then getData() function
+    //    $eventname = $form[ 'eventname' ]->getData();
+    //    $eventdatestarttime = $form[ 'eventdatestarttime' ]->getData();
+    //    $eventdescription = $form[ 'eventdescription' ]->getData();
+    //    $eventimage = $form[ 'eventimage' ]->getData();
+    //    $eventcapacity = $form[ 'eventcapacity' ]->getData();
+    //    $eventemail = $form[ 'eventemail' ]->getData();
+    //    $eventphonenumber = $form[ 'eventphonenumber' ]->getData();
+    //    $eventaddress = $form[ 'eventaddress' ]->getData();
+    //    $eventurl = $form[ 'eventurl' ]->getData();
+    //    $eventtype = $form[ 'eventtype' ]->getData();
+    //    $em->flush();
+    //         $this->addFlash(
+    //                 'notice',
+    //                 'Todo Updated'
+    //                );
+    //    return   $this ->redirectToRoute( 'cr13' );
+    // }
+    // return   $this ->render( 'cr13/edit.html.twig' , array ( 'form'  => $form->createView()));
+    // }
   /**
-    * @Route("/details", name="details_page")
+    * @Route("/details/{id}", name="details_page")
     */
-    public  function detailsAction()
+    public  function detailsAction($id)
     {
-        return  $this->render('cr13/details.html.twig');
+        $event = $this->getDoctrine()->getRepository('App:Events')->find($id);
+       return $this->render('cr13/details.html.twig', array('event' => $event));
     }
 }
